@@ -14,7 +14,7 @@ dist-ssr
 .prettierrc
 
 #Frontend Mentor directories and files
-./design/*
+design
 README-template.md
 style-guide.md
 
