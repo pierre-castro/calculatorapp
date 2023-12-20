@@ -2,17 +2,17 @@ import React from "react";
 
 function Header({ theme, setTheme }) {
   return (
-    <div className="text-textColor flex items-center justify-between">
+    <div className="flex items-center justify-between text-textColor">
       <h1 className="text-4xl font-bold">calc</h1>
-      <div id="theme-selector" className="flex items-center gap-4 p-2">
-        <h2 className="text-base font-medium">Theme</h2>
+      <div id="theme-selector" className="flex items-center gap-2 p-2 sm:gap-4">
+        <h2 className="text-base font-medium"></h2>
         <div>
           <div className="mx-[2px] flex justify-between text-sm font-bold">
             <span>1</span>
             <span>2</span>
             <span>3</span>
           </div>
-          <div className="bg-keypadBg flex w-16 rounded-lg px-1 py-1">
+          <div className="flex w-16 rounded-lg bg-keypadBg px-1 py-1">
             <input
               type="range"
               min="1"

@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import Header from "./Header";
 import Screen from "./Screen";
 import Keypad from "./Keypad";
+import Footer from "./Footer";
 import { ACTIONS } from "./Utils/Actions";
 
 function calcReducer(state, { type, payload }) {
@@ -35,7 +36,9 @@ function calcReducer(state, { type, payload }) {
         currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
     case ACTIONS.CLEAR:
-      return {};
+      return {
+        currentOperand: "0",
+      };
 
     case ACTIONS.OPERATION:
       if (!state.currentOperand) {
@@ -106,19 +109,21 @@ function formatOperand(operand) {
 function CalculatorApp({ children, theme, setTheme }) {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     calcReducer,
-    { currentOperand: 0 },
+    { currentOperand: "0" },
   );
 
   return (
     <div
-      className={["bg-mainBg h-screen", `theme${theme}`]
-        .filter(Boolean)
-        .join(" ")}
+      className={[
+        "flex min-h-screen place-content-center bg-mainBg",
+        `theme${theme}`,
+      ].join(" ")}
     >
-      <div className="m-auto grid h-screen max-w-lg auto-rows-min content-center gap-y-7">
+      <div className="m-3 grid max-w-lg auto-rows-min flex-col content-center gap-y-4 sm:m-auto sm:min-w-[500px] sm:gap-y-7">
         <Header theme={theme} setTheme={setTheme} />
         <Screen number={formatOperand(currentOperand)} />
         <Keypad dispatch={dispatch} />
+        <Footer />
         {children}
       </div>
     </div>

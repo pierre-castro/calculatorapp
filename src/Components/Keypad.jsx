@@ -7,7 +7,7 @@ import OperationKey from "./Keys/OperationKey";
 
 function Keypad({ dispatch }) {
   return (
-    <div className="text-keySize bg-keypadBg grid grid-cols-4 justify-items-stretch gap-4 rounded-lg p-4">
+    <div className="grid grid-cols-4 gap-4 rounded-lg bg-keypadBg p-4 text-keySize">
       <DigitKey digit="7" dispatch={dispatch} />
       <DigitKey digit="8" dispatch={dispatch} />
       <DigitKey digit="9" dispatch={dispatch} />

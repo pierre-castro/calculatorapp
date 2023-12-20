@@ -4,7 +4,7 @@ import { ACTIONS } from "../Utils/Actions";
 function DelKey({ dispatch }) {
   return (
     <button
-      className=" bg-delResetKeys shadow-delResetKeysShadow shadow-custom rounded-md py-2 text-white active:translate-y-[2px] active:shadow-none"
+      className=" rounded-md bg-delResetKeys py-2 text-white shadow-custom shadow-delResetKeysShadow active:translate-y-[2px] active:shadow-none"
       onClick={() => dispatch({ type: ACTIONS.DELETE })}
     >
       DEL

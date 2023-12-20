@@ -19,10 +19,11 @@ export default {
         keyDarkRed: "hsl(6, 70%, 34%)",
       },
       fontSize: {
-        keySize: "clamp(1rem, 6vw, 2rem)",
+        keySize: "clamp(1.5rem, 6vw, 2rem)",
       },
       boxShadow: {
         custom: "0px 2px 0px 0.5px",
+        customInner: "inset 0px 2px 0px 0.4px",
       },
     },
   },

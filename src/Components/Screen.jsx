@@ -2,7 +2,7 @@ import React from "react";
 
 function Screen({ number = "0" }) {
   return (
-    <div className="bg-screen text-textColor rounded-lg p-8 text-right text-4xl">
+    <div className="rounded-lg bg-screen p-4 text-right text-4xl text-textColor sm:p-6">
       {number}
     </div>
   );
