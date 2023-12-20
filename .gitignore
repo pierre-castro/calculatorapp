@@ -13,6 +13,11 @@ dist-ssr
 *.local
 .prettierrc
 
+#Frontend Mentor directories and files
+./design/*
+README-template.md
+style-guide.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
