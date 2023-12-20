@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* font-family: "League Spartan"; */
+    line-height: 1.5;
+    font-weight: 700;
+
+    color: rgba(255, 255, 255, 0.87);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    --bg-main1: hsl(222, 26%, 31%);
+    --bg-keypad1: hsl(223, 31%, 20%);
+    --bg-screen1: hsl(224, 36%, 15%);
+    --bg-delResetKeys1: hsl(225, 21%, 49%);
+    --delResetKeysShadow1: hsl(224, 28%, 35%);
+    --bg-keys1: hsl(30, 25%, 89%);
+    --keyShadow1: hsl(28, 16%, 65%);
+    --equalsKey1: hsl(6, 63%, 50%);
+    --equalsKeyShadow1: hsl(6, 70%, 34%);
+    --color-text1: hsl(0, 0%, 100%);
+    --color-opKeys1: hsl(221, 14%, 31%);
+    --bg-main2: hsl(0, 0%, 90%);
+    --bg-keypad2: hsl(0, 5%, 81%);
+    --bg-screen2: hsl(0, 5%, 81%);
+    --bg-delResetKeys2: hsl(185, 42%, 37%);
+    --delResetKeysShadow2: hsl(185, 58%, 25%);
+    --bg-keys2: hsl(45, 7%, 89%);
+    --keyShadow2: hsl(35, 11%, 61%);
+    --equalsKey2: hsl(25, 98%, 40%);
+    --equalsKeyShadow2: hsl(25, 99%, 27%);
+    --color-text2: hsl(60, 10%, 19%);
+    --color-opKeys2: hsl(60, 10%, 19%);
+    --bg-main3: hsl(268, 75%, 9%);
+    --bg-keypad3: hsl(268, 71%, 12%);
+    --bg-screen3: hsl(268, 71%, 12%);
+    --bg-delResetKeys3: hsl(281, 89%, 26%);
+    --delResetKeysShadow3: hsl(285, 91%, 52%);
+    --bg-keys3: hsl(268, 47%, 21%);
+    --keyShadow3: hsl(290, 70%, 36%);
+    --equalsKey3: hsl(176, 100%, 44%);
+    --equalsKeyShadow3: hsl(177, 92%, 70%);
+    --color-text3: hsl(52, 100%, 62%);
+    --color-opKeys3: hsl(52, 100%, 62%);
+  }
+}
+
+.theme1 {
+  --bg-main: var(--bg-main1);
+  --bg-keypad: var(--bg-keypad1);
+  --bg-screen: var(--bg-screen1);
+  --bg-delResetKeys: var(--bg-delResetKeys1);
+  --delResetKeysShadow: var(--delResetKeysShadow1);
+  --bg-keys: var(--bg-keys1);
+  --keyShadow: var(--keyShadow1);
+  --equalsKey: var(--equalsKey1);
+  --equalsKeyShadow: var(--equalsKeyShadow1);
+  --textColor: var(--color-text1);
+  --opKeyColor: var(--color-opKeys1);
+}
+
+.theme2 {
+  --bg-main: var(--bg-main2);
+  --bg-keypad: var(--bg-keypad2);
+  --bg-screen: var(--bg-screen2);
+  --bg-delResetKeys: var(--bg-delResetKeys2);
+  --delResetKeysShadow: var(--delResetKeysShadow2);
+  --bg-keys: var(--bg-keys2);
+  --keyShadow: var(--keyShadow2);
+  --equalsKey: var(--equalsKey2);
+  --equalsKeyShadow: var(--equalsKeyShadow2);
+  --textColor: var(--color-text2);
+  --opKeyColor: var(--color-opKeys2);
+}
+
+.theme3 {
+  --bg-main: var(--bg-main3);
+  --bg-keypad: var(--bg-keypad3);
+  --bg-screen: var(--bg-screen3);
+  --bg-delResetKeys: var(--bg-delResetKeys3);
+  --delResetKeysShadow: var(--delResetKeysShadow3);
+  --bg-keys: var(--bg-keys3);
+  --keyShadow: var(--keyShadow3);
+  --equalsKey: var(--equalsKey3);
+  --equalsKeyShadow: var(--equalsKeyShadow3);
+  --textColor: var(--color-text3);
+  --opKeyColor: var(--color-opKeys3);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @apply bg-equalsKey h-4 w-4 rounded-full;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  @apply bg-equalsKey;
+}
+
+@font-face {
+  font-family: "League Spartan";
+  src:
+    local("LeagueSpartan"),
+    url("./assets/fonts/LeagueSpartan-VariableFont_wght.ttf") format("truetype");
+  font-style: oblique 0deg 12deg;
+}
+
+* {
+  box-sizing: border-box;
+}
