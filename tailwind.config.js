@@ -15,8 +15,6 @@ export default {
         equalsKeyShadow: "var(--equalsKeyShadow)",
         textColor: "var(--textColor)",
         opKeyColor: "var(--opKeyColor)",
-        keyRed: "hsl(6, 63%, 50%)",
-        keyDarkRed: "hsl(6, 70%, 34%)",
       },
       fontSize: {
         keySize: "clamp(1.5rem, 6vw, 2rem)",
