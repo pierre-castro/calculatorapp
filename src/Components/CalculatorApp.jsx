@@ -9,7 +9,10 @@ function calcReducer(state, { type, payload }) {
   console.log("State : ", state);
   switch (type) {
     case ACTIONS.ADD_DIGIT:
-      if (payload.digit === "0" && state.currentOperand === "0") return state;
+      if (payload.digit === "0" && state.currentOperand === "0") {
+        return state;
+      }
+
       if (
         payload.digit === "." &&
         state.currentOperand &&
@@ -18,9 +21,12 @@ function calcReducer(state, { type, payload }) {
         return state;
       }
       if (state.currentOperand === "0") {
+        console.log("test");
         return {
           ...state,
+          previousOperand: "0",
           currentOperand: payload.digit,
+          overwrite: false,
         };
       }
       if (state.overwrite) {
@@ -41,16 +47,9 @@ function calcReducer(state, { type, payload }) {
       };
 
     case ACTIONS.OPERATION:
-      if (!state.currentOperand) {
-        return {
-          ...state,
-          operation: payload.operation,
-        };
-      }
-
       if (state.currentOperand && state.previousOperand && state.operation) {
-        console.log("HOURRA");
         return {
+          overwrite: true,
           operation: payload.operation,
           currentOperand: eval(`
                 ${state.previousOperand}
@@ -59,11 +58,9 @@ function calcReducer(state, { type, payload }) {
               `).toString(),
         };
       }
-
-      console.log("HOLA");
       return {
+        ...state,
         overwrite: true,
-        currentOperand: state.currentOperand,
         operation: payload.operation,
       };
     case ACTIONS.EVALUATE:
@@ -107,10 +104,9 @@ function formatOperand(operand) {
 }
 
 function CalculatorApp({ children, theme, setTheme }) {
-  const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
-    calcReducer,
-    { currentOperand: "0" },
-  );
+  const [{ currentOperand }, dispatch] = useReducer(calcReducer, {
+    currentOperand: "0",
+  });
 
   return (
     <div
