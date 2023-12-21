@@ -1,5 +1,5 @@
-import React from "react";
 import { ACTIONS } from "../Utils/Actions";
+import PropTypes from "prop-types";
 
 function DelKey({ dispatch }) {
   return (
@@ -13,3 +13,7 @@ function DelKey({ dispatch }) {
 }
 
 export default DelKey;
+
+DelKey.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};

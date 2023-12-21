@@ -1,9 +1,9 @@
-import React from "react";
 import DigitKey from "./Keys/DigitKey";
 import Delkey from "./Keys/DelKey";
 import ResetKey from "./Keys/ResetKey";
 import EqualKey from "./Keys/EqualKey";
 import OperationKey from "./Keys/OperationKey";
+import PropTypes from "prop-types";
 
 function Keypad({ dispatch }) {
   return (
@@ -29,5 +29,9 @@ function Keypad({ dispatch }) {
     </div>
   );
 }
+
+Keypad.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default Keypad;

@@ -1,15 +1,20 @@
-import React from "react";
 import { ACTIONS } from "../Utils/Actions";
+import PropTypes from "prop-types";
 
 function DigitKey({ digit, dispatch }) {
   return (
     <button
-      className="bg-keys text-opKeyColor shadow-keyShadow shadow-custom rounded-md py-2 active:translate-y-[2px] active:shadow-none"
+      className="rounded-md bg-keys py-2 text-opKeyColor shadow-custom shadow-keyShadow active:translate-y-[2px] active:shadow-none"
       onClick={() => dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })}
     >
       {digit}
     </button>
   );
 }
+
+DigitKey.propTypes = {
+  digit: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default DigitKey;

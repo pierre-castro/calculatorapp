@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 function Screen({ number = "0" }) {
   return (
@@ -7,5 +7,9 @@ function Screen({ number = "0" }) {
     </div>
   );
 }
+
+Screen.propTypes = {
+  number: PropTypes.string.isRequired,
+};
 
 export default Screen;

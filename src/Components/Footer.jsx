@@ -1,5 +1,3 @@
-import React from "react";
-
 function Footer() {
   return (
     <div className="text-center text-sm font-thin text-textColor">
@@ -7,7 +5,6 @@ function Footer() {
       <a
         className="text-equalsKey hover:text-equalsKeyShadow hover:underline"
         href="https://www.frontendmentor.io?ref=challenge"
-        target="_blank"
       >
         Frontend Mentor
       </a>

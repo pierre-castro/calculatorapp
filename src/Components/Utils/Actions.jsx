@@ -5,3 +5,10 @@ export const ACTIONS = {
   OPERATION: "operation",
   EVALUATE: "evaluate",
 };
+
+export const OPERATIONS = {
+  ADD: "+",
+  SUBSTRACT: "-",
+  MULTIPLY: "*",
+  DIVIDE: "/",
+};

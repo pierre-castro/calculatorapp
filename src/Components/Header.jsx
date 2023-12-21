@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 
 function Header({ theme, setTheme }) {
   return (
@@ -27,5 +27,10 @@ function Header({ theme, setTheme }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  theme: PropTypes.string.isRequired,
+  setTheme: PropTypes.func.isRequired,
+};
 
 export default Header;

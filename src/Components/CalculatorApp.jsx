@@ -1,12 +1,23 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
+import PropTypes from "prop-types";
 import Header from "./Header";
 import Screen from "./Screen";
 import Keypad from "./Keypad";
 import Footer from "./Footer";
-import { ACTIONS } from "./Utils/Actions";
+import { ACTIONS, OPERATIONS } from "./Utils/Actions";
+
+function evaluate(previousOperand, currentOperand, operation) {
+  if (operation === OPERATIONS.ADD)
+    return parseFloat(previousOperand) + parseFloat(currentOperand);
+  if (operation === OPERATIONS.SUBSTRACT)
+    return parseFloat(previousOperand) - parseFloat(currentOperand);
+  if (operation === OPERATIONS.MULTIPLY)
+    return parseFloat(previousOperand) * parseFloat(currentOperand);
+  if (operation === OPERATIONS.DIVIDE)
+    return parseFloat(previousOperand) / parseFloat(currentOperand);
+}
 
 function calcReducer(state, { type, payload }) {
-  console.log("State : ", state);
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       if (payload.digit === "0" && state.currentOperand === "0") {
@@ -21,7 +32,6 @@ function calcReducer(state, { type, payload }) {
         return state;
       }
       if (state.currentOperand === "0") {
-        console.log("test");
         return {
           ...state,
           previousOperand: "0",
@@ -51,11 +61,11 @@ function calcReducer(state, { type, payload }) {
         return {
           overwrite: true,
           operation: payload.operation,
-          currentOperand: eval(`
-                ${state.previousOperand}
-                ${state.operation}
-                ${state.currentOperand}
-              `).toString(),
+          currentOperand: evaluate(
+            state.previousOperand,
+            state.currentOperand,
+            state.operation,
+          ).toString(),
         };
       }
       return {
@@ -69,8 +79,10 @@ function calcReducer(state, { type, payload }) {
       }
       return {
         overwrite: true,
-        currentOperand: eval(
-          `${state.previousOperand}${state.operation}${state.currentOperand}`,
+        currentOperand: evaluate(
+          state.previousOperand,
+          state.currentOperand,
+          state.operation,
         ).toString(),
       };
     case ACTIONS.DELETE:
@@ -82,12 +94,11 @@ function calcReducer(state, { type, payload }) {
         currentOperand: state.currentOperand.slice(0, -1),
       };
     default:
-      console.log("Dispatch default.");
-      return {};
+      throw Error("Unknown action: " + type);
   }
 }
 
-const INT_FORMATTER = new Intl.NumberFormat("en-US", {
+const FORMATTER = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
@@ -98,9 +109,7 @@ function formatOperand(operand) {
     return "ERROR";
   }
   const [int, dec] = operand.split(".");
-  return dec
-    ? `${INT_FORMATTER.format(int)}.${dec}`
-    : INT_FORMATTER.format(int);
+  return dec ? `${FORMATTER.format(int)}.${dec}` : FORMATTER.format(int);
 }
 
 function CalculatorApp({ children, theme, setTheme }) {
@@ -125,5 +134,11 @@ function CalculatorApp({ children, theme, setTheme }) {
     </div>
   );
 }
+
+CalculatorApp.propTypes = {
+  children: PropTypes.node,
+  theme: PropTypes.string.isRequired,
+  setTheme: PropTypes.func.isRequired,
+};
 
 export default CalculatorApp;
