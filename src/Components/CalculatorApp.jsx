@@ -6,6 +6,8 @@ import Keypad from "./Keypad";
 import Footer from "./Footer";
 import { ACTIONS, OPERATIONS } from "./Utils/Actions";
 
+const MAX_DIGIT = 18;
+
 function evaluate(previousOperand, currentOperand, operation) {
   if (operation === OPERATIONS.ADD)
     return parseFloat(previousOperand) + parseFloat(currentOperand);
@@ -104,8 +106,7 @@ const FORMATTER = new Intl.NumberFormat("en-US", {
 
 function formatOperand(operand) {
   if (!operand) return;
-  if (operand.length > 18) {
-    operand = operand.slice(0, 18);
+  if (operand.length > MAX_DIGIT) {
     return "ERROR";
   }
   const [int, dec] = operand.split(".");
@@ -124,7 +125,7 @@ function CalculatorApp({ children, theme, setTheme }) {
         `theme${theme}`,
       ].join(" ")}
     >
-      <div className="m-3 grid max-w-lg auto-rows-min flex-col content-center gap-y-4 sm:m-auto sm:min-w-[500px] sm:gap-y-7">
+      <div className="m-3 grid min-w-[80vw] max-w-[80vw] auto-rows-min flex-col content-center gap-y-4 sm:m-auto sm:min-w-[500px] sm:max-w-[500px] sm:gap-y-7">
         <Header theme={theme} setTheme={setTheme} />
         <Screen number={formatOperand(currentOperand)} />
         <Keypad dispatch={dispatch} />

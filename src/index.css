@@ -48,6 +48,8 @@
     --equalsKeyShadow3: hsl(177, 92%, 70%);
     --color-text3: hsl(52, 100%, 62%);
     --color-opKeys3: hsl(52, 100%, 62%);
+
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
